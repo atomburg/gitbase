@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width">
   </head>
   <body> 
-  <script type="module">
-  import { Octokit, App } from "https://cdn.skypack.dev/octokit";
+    <script type="module">
+      import { Octokit, App } from "https://cdn.skypack.dev/octokit";
+    </script>
+    
+    <script>
+      function test(){
+        // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
+        const octokit = new Octokit({ auth: document.getElementById('token').value });
 
-  function test(){
-    // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
-    const octokit = new Octokit({ auth: document.getElementById('token').value });
-
-    // Compare: https://docs.github.com/en/rest/reference/users#get-the-authenticated-user
-    const {
-      data: { login },
-    } = await octokit.rest.users.getAuthenticated();
-    console.log("Hello, %s", login);
-  }
-  </script>
+        // Compare: https://docs.github.com/en/rest/reference/users#get-the-authenticated-user
+        const {
+          data: { login },
+        } = await octokit.rest.users.getAuthenticated();
+        console.log("Hello, %s", login);
+      }
+    </script>
   <input id='token' name='token' type='text' value='xxxx-xxxx-xxxx-xxxx'/>
   <input type='button' value='test' onclick='test()'/>
   </body>
