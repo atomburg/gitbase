@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width">
   </head>
   <body> 
-  <input id='token' name='token' type='text' value='xxxx-xxxx-xxxx-xxxx'/>
-  <input type='button' value='test' onclick='test()'/>
-    
   <script type="module">
   import { Octokit, App } from "https://cdn.skypack.dev/octokit";
 
-    
   function test(){
     // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
     const octokit = new Octokit({ auth: document.getElementById('token').value });
@@ -23,6 +19,8 @@
     console.log("Hello, %s", login);
   }
   </script>
+  <input id='token' name='token' type='text' value='xxxx-xxxx-xxxx-xxxx'/>
+  <input type='button' value='test' onclick='test()'/>
   </body>
 </html>
     
