@@ -10,7 +10,7 @@
     <script async type="module">
       import { Octokit, App } from "https://cdn.skypack.dev/octokit";
       
-      export function test(){
+      window.test = function(){
         // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
         var octokit = new Octokit({ auth: document.getElementById('token').value });
 
