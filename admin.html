@@ -43,7 +43,7 @@
       function on_input_image_change(){
         var reader=new FileReader();
         reader.onload = function (e) { document.getElementById('preview').src = e.target.result;}
-        reader.readAsDataURL(this.files[0]);
+        reader.readAsDataURL(document.getElementById('imgurl').files[0]);
       }       
     </script>
     <img id="preview" style="width:96px;height:144px;"/>
