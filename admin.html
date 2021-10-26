@@ -19,7 +19,7 @@
       
       window.upload_file = function(){
         var octokit = new Octokit({ auth: document.getElementById('token').value });  
-        await octokit.request('PUT /repos/atomburg/gitbase/contents/images/1.png', {
+        octokit.request('PUT /repos/atomburg/gitbase/contents/images/1.png', {
               owner: 'atomburg',
               repo: 'gitbase',
               path: 'images/1.png',
