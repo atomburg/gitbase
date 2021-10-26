@@ -13,13 +13,33 @@
       window.test = function(){
         // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
         var octokit = new Octokit({ auth: document.getElementById('token').value });
-
         // Compare: https://docs.github.com/en/rest/reference/users#get-the-authenticated-user
         octokit.rest.users.getAuthenticated();      
       }
+      
+      window.upload_file = function(){
+        var octokit = new Octokit({ auth: document.getElementById('token').value });  
+        await octokit.request('PUT /repos/atomburg/gitbase/contents/images/1.png', {
+              owner: 'atomburg',
+              repo: 'gitbase',
+              path: 'images/1.png',
+              message: 'upload 1.png',
+              content: 'iVBORw0KGgoAAAANSUhEUgAAAB0AAAAaCAYAAABLlle3AAACHklEQVRIiWPczM3wn4HOgIneFg5e'
+                       + 'SyV8Axicrz1g8Pnyn8FyxwEGVn4B2lqq3TWBwWT5eobfHz8w/Pn0kUHYxh4sRilgxJeQPJ59YGDh'
+                       + '42c47unIwCWvwKA/Yz7Y8h1SlPmW6Dh9vGQBmAY5glKA19KPly6AaZAvhW0dKLaMKEs/QS0FWcin'
+                       + 'Z0AfS2FBCkrB/FBLvz96SFtLQT4FWQKKR5noeLAYLMhpZikI3JuKmkXeHj5Ae0vRLaGLpeip9vvD'
+                       + 'B7S3VDYmAYWvVt1AW0tB2YRPVx9FTDErn+I8i9dSpewCOBuUiu9PmwhmG8xcQFHBj9NSkKGg/AkD'
+                       + 'oFR8tayA4dPliwyccvIU1TgsuCQUgb6ElbOgQv4JtKA4ExHAYHf8AjjYQfS3Rw/AtQ8yAKl/c+gA'
+                       + 'w8stG+AFDDLAWsuAfOB8/QHcUpDvQAUFKC5BvkQHb48cBKdqUBUISgeg0gumFxQloBAi6FNkX4IA'
+                       + 'yFewBAXzBcgRoOCHiYOCH1ZWgyy2AgY/yAxsiQ7Fp6DaBGQhKJsgWwryyYvNG8AFwyekYhAUIqAs'
+                       + 'BErRyOpAFkn4+MPVbeFhxLQUZJlaVQO8fIUBkK/2aiqAgw0fgOlHD36Q/ntTJjDcamtAtfRma8N/'
+                       + 'tap6MAcUd8j58mp5IcP9qZQ3T9AB438gAOXBq+UFYJciB9VxDweqWwgCTE+WLmQ4ZGkAjh+YhaBg'
+                       + 'ORMeQEAr+QAAC3Dk8f/PHfIAAAAASUVORK5CYII='
+            })
+      }
     </script>   
     
-    <input type='button' value='test' onclick='test()'/>
+    <input type='button' value='test' onclick='upload_file()'/>
     
   </body>
 </html>
